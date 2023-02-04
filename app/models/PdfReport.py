@@ -1,6 +1,4 @@
-from .Bill import Bill
-from .Flatmate import Flatmate
-
+from .Household import Household
 
 class PdfReport:
     """Creates a PDF file that contains data about split house payment."""
@@ -8,5 +6,5 @@ class PdfReport:
     def __init__(self, filename: str) -> None:
         self.filename = filename
 
-    def generate(self,  flatmates: list[Flatmate], bill: Bill):
+    def generate(self,  household: Household):
         pass

@@ -7,6 +7,6 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "python3 main.py"
+      sh -c "python3 app.py"
 
 

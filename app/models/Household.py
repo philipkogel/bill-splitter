@@ -4,7 +4,9 @@ from .Flatmate import Flatmate
 
 class Household:
     """Creates an object that contains all flatmates and the bill."""
-    def __init__(self, bill: Bill = None, flatmates: list[Flatmate] = []) -> None:
+    def __init__(self, bill: Bill = None, flatmates=None) -> None:
+        if flatmates is None:
+            flatmates = []
         self.bill = bill
         self.flatmates = flatmates
 

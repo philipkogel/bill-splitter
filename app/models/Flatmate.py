@@ -7,5 +7,5 @@ class Flatmate:
         self.days_in_house = days_in_house
 
     def pays(self, bill: Bill, household_days_sum: int) -> int:
-        weight = self.days_in_house / (self.days_in_house + household_days_sum)
+        weight = self.days_in_house / household_days_sum
         return bill.amount * weight

@@ -9,6 +9,7 @@ class PdfReport:
         self.filename = filename
 
     def generate(self, household: Household):
+        print(f'-------- Generating {self.filename} ----------')
         pdf = FPDF()
         pdf.add_page()
 
@@ -19,15 +20,18 @@ class PdfReport:
         pdf.set_font(family='Times', size=16, style='B')
         pdf.cell(w=0, h=20, txt='Household Bill', border=0, align="C", ln=1)
 
-        # Period
+        # Amount and period
         pdf.set_font(family='Times', size=14, style='B')
+        pdf.cell(w=50, h=5, txt='Amount:', border=0)
+        pdf.cell(w=0, h=5, txt=str(household.bill.amount), border=0, ln=1)
         pdf.cell(w=50, h=10, txt='Period:', border=0)
         pdf.cell(w=0, h=10, txt=household.bill.period.strftime('%B %Y'), border=0, ln=1)
 
         pdf.set_font(family='Times', size=12)
         # Flatmates
         for flatmate in household.flatmates:
-            pdf.cell(w=20, h=5, txt=flatmate.name, border=0)
+            pdf.cell(w=30, h=5, txt=flatmate.name, border=0)
+            pdf.cell(w=20, h=5, txt=f'{str(flatmate.days_in_house)} days', border=0)
             pdf.cell(
                 w=0,
                 h=5,
@@ -41,4 +45,5 @@ class PdfReport:
                 ln=1
             )
 
-        pdf.output(self.filename)
+        pdf.output(f'files/{self.filename}')
+        print(f'-------- {self.filename} is ready! ----------')

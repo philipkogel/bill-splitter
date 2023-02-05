@@ -11,18 +11,28 @@ from models import (
 # Create household
 household = Household()
 
-bill = Bill(amount=120, period=datetime.datetime.now())
+print('------------------------------------------')
+print('-----      Bill Splitter CLI        ------')
+bill = Bill(
+    amount=float(input('Enter bill amount. E.g. 350: ')),
+    period=datetime.datetime.strptime(
+        input('What is the bill period? E.g. December 2022: '), '%B %Y')
+)
 household.add_bill(bill=bill)
-flatmate = Flatmate(name="Phil", days_in_house=20)
-flatmate2 = Flatmate(name='Marc', days_in_house=25)
-household.add_flatmate(flatmate=flatmate)
-household.add_flatmate(flatmate=flatmate2)
 
-print(bill.period)
-print(flatmate.name)
-print(household.sum_days_in())
+add_flatmate = True
+while add_flatmate:
+    name = input('Flatmates name: ')
+    flatmate = Flatmate(
+        name=name,
+        days_in_house=int(input(f'How many days did {name} stay in da house?: '))
+    )
+    household.add_flatmate(flatmate)
+    if len(household.flatmates) > 1 and \
+            input('To add next flatmate type: Y, type any other character to generate the report. Y/n: ').capitalize() \
+            != 'Y':
+        add_flatmate = False
 
-print(f'{flatmate.name} pays: {flatmate.pays(bill, household_days_sum=household.sum_days_in())}')
 
-pdf = PdfReport(filename="household_report.pdf")
+pdf = PdfReport(filename=f"household_report_{bill.period.month}_{bill.period.year}.pdf")
 pdf.generate(household=household)

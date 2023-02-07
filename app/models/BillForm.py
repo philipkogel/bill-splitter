@@ -1,4 +1,5 @@
-from wtforms import Form
+from wtforms import Form, IntegerField, DateField
 
 class BillForm(Form):
-    pass
+    amount = IntegerField('Amount')
+    period = DateField('Issue Date')

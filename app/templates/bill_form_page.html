@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<title>Bill Splitter | Form Page</title>
+
+<!-- CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <main>
+        <div class="container pt-5">
+            <h1 class="text-left">Bill Form</h1>
+            <div class="row">
+                <div class="col-6">
+                    <form>
+                      <div class="form-group">
+                        <label for="amountInput">Amount</label>
+                        <input type="number" class="form-control" id="amountInput" aria-describedby="amountHelp" placeholder="Enter amount">
+                        <small id="amountHelp" class="form-text text-muted">Enter bill amount. E.g. 350.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="issueDateInput">Issue Date</label>
+                        <input type="date" class="form-control" id="issueDateInput" placeholder="Issue Date">
+                      </div>
+                      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

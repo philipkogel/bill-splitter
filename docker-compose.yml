@@ -6,7 +6,11 @@ services:
       context: .
     volumes:
       - ./app:/app
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_DEBUG: 1
     command: >
-      sh -c "python3 app.py"
+      sh -c "python3 -m flask run --host=0.0.0.0 --debugger"
 
 

@@ -13,21 +13,40 @@
 <body>
 
     <main>
-        <div class="container pt-5">
+        <div class="container pt-3">
             <h1 class="text-left">Bill Form</h1>
             <div class="row">
                 <div class="col-6">
                     <form>
                       <div class="form-group">
-                        <label for="amountInput">Amount</label>
-                        <input type="number" class="form-control" id="amountInput" aria-describedby="amountHelp" placeholder="Enter amount">
-                        <small id="amountHelp" class="form-text text-muted">Enter bill amount. E.g. 350.</small>
+                        <label class="mb-2" for="amountInput">{{bill_form.amount.label}}</label>
+                        {{bill_form.amount(class_="form-control", id_="amountInput", placeholder_="Enter amount")}}
                       </div>
                       <div class="form-group">
-                        <label for="issueDateInput">Issue Date</label>
-                        <input type="date" class="form-control" id="issueDateInput" placeholder="Issue Date">
+                        <label class="mb-2" for="issueDateInput">{{bill_form.issue_date.label}}</label>
+                          {{bill_form.issue_date(class_="form-control", id_="amountInput")}}
                       </div>
-                      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        <hr>
+                        <p class="p-1 m-1">First flatmate</p>
+                      <div class="form-group">
+                        <label class="mb-2" for="name1Input">{{bill_form.name1.label}}</label>
+                        {{bill_form.name1(class_="form-control", id_="name1Input", placeholder_="Name")}}
+                      </div>
+                      <div class="form-group">
+                        <label class="mb-2" for="dnh1Input">{{bill_form.days_in_house1.label}}</label>
+                        {{bill_form.days_in_house1(class_="form-control", id_="dnh1Input", placeholder_="Enter days")}}
+                      </div>
+                        <hr>
+                        <p class="p-1 m-1">Second flatmate</p>
+                      <div class="form-group">
+                        <label class="mb-2" for="name2Input">{{bill_form.name2.label}}</label>
+                        {{bill_form.name2(class_="form-control", id_="name2Input", placeholder_="Name")}}
+                      </div>
+                      <div class="form-group">
+                        <label class="mb-2" for="dnh2Input">{{bill_form.days_in_house2.label}}</label>
+                        {{bill_form.days_in_house2(class_="form-control", id_="dnh2Input", placeholder_="Enter days")}}
+                      </div>
+                        {{bill_form.button(class_="btn btn-primary mt-3")}}
                     </form>
                 </div>
             </div>

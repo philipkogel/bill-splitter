@@ -4,3 +4,4 @@ from .PdfReport import PdfReport
 from .Household import Household
 from .HomePage import HomePage
 from .BillFormPage import BillFormPage
+from .BillForm import BillForm

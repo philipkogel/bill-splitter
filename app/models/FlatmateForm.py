@@ -2,5 +2,5 @@ from wtforms import Form, IntegerField, StringField
 
 
 class FlatmateForm(Form):
-    name = StringField('Name')
-    days_in_house = IntegerField('Days in house')
+    flatmate_name = StringField(label='Name')
+    days_in_house = IntegerField(label='Days in house')

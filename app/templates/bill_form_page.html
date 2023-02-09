@@ -18,6 +18,7 @@
             <div class="row">
                 <div class="col-6">
                     <form action="/results" method="POST">
+                        {{ bill_form.hidden_tag() }}
                       <div class="form-group">
                         <label class="mb-2" for="amountInput">{{bill_form.amount.label}}</label>
                         {{bill_form.amount(class_="form-control", id_="amountInput", placeholder_="Enter amount")}}
@@ -27,28 +28,32 @@
                           {{bill_form.issue_date(class_="form-control", id_="amountInput")}}
                       </div>
                         {% for flatmate in bill_form.flatmates %}
-                            {{flatmate.name()}}
+                            {% set results = flatmate.name.split('-') %}
+                            {% set index = results[1]|int %}
+                            <hr>
+                            <p class="p-1 m-1">Flatmate #{{index+1}}</p>
+                           <div class="form-group">
+                                <label class="mb-2" for={{flatmate.flatmate_name.id}}>{{flatmate.flatmate_name.label}}</label>
+                                <input
+                                        class="form-control"
+                                        id={{flatmate.flatmate_name.id}}
+                                        name={{flatmate.flatmate_name.name}}
+                                        placeholder="Name"
+                                        type="text"
+                                        value={{flatmate.flatmate_name.value}}>
+                            </div>
+                           <div class="form-group">
+                                <label class="mb-2" for={{flatmate.days_in_house.id}}>{{flatmate.days_in_house.label}}</label>
+                                <input
+                                        class="form-control"
+                                        type="number"
+                                        id={{flatmate.days_in_house.id}}
+                                        placeholder="Enter days"
+                                        name={{flatmate.days_in_house.name}}
+                                        value={{flatmate.days_in_house.value}}
+                                >
+                            </div>
                         {% endfor %}
-                        <hr>
-                        <p class="p-1 m-1">First flatmate</p>
-                      <div class="form-group">
-                        <label class="mb-2" for="name1Input">{{bill_form.name1.label}}</label>
-                        {{bill_form.name1(class_="form-control", id_="name1Input", placeholder_="Name")}}
-                      </div>
-                      <div class="form-group">
-                        <label class="mb-2" for="dnh1Input">{{bill_form.days_in_house1.label}}</label>
-                        {{bill_form.days_in_house1(class_="form-control", id_="dnh1Input", placeholder_="Enter days")}}
-                      </div>
-                        <hr>
-                        <p class="p-1 m-1">Second flatmate</p>
-                      <div class="form-group">
-                        <label class="mb-2" for="name2Input">{{bill_form.name2.label}}</label>
-                        {{bill_form.name2(class_="form-control", id_="name2Input", placeholder_="Name")}}
-                      </div>
-                      <div class="form-group">
-                        <label class="mb-2" for="dnh2Input">{{bill_form.days_in_house2.label}}</label>
-                        {{bill_form.days_in_house2(class_="form-control", id_="dnh2Input", placeholder_="Enter days")}}
-                      </div>
                         {{bill_form.button(class_="btn btn-primary mt-3")}}
                     </form>
                 </div>

@@ -26,6 +26,9 @@
                         <label class="mb-2" for="issueDateInput">{{bill_form.issue_date.label}}</label>
                           {{bill_form.issue_date(class_="form-control", id_="amountInput")}}
                       </div>
+                        {% for flatmate in bill_form.flatmates %}
+                            {{flatmate.name()}}
+                        {% endfor %}
                         <hr>
                         <p class="p-1 m-1">First flatmate</p>
                       <div class="form-group">

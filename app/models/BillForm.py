@@ -1,13 +1,11 @@
-from wtforms import Form, IntegerField, DateField, StringField, SubmitField
+from .FlatmateForm import FlatmateForm
+from wtforms import Form, IntegerField, DateField, StringField, SubmitField, FieldList, FormField
+from flask_wtf import FlaskForm
 
-class BillForm(Form):
-    amount = IntegerField('Amount', description="asd")
+
+class BillForm(FlaskForm):
+    amount = IntegerField('Amount')
     issue_date = DateField('Issue Date')
-
-    name1 = StringField('Name')
-    days_in_house1 = IntegerField('Days in house')
-
-    name2 = StringField('Name')
-    days_in_house2 = IntegerField('Days in house')
+    flatmates = FieldList(FormField(FlatmateForm), min_entries=2)
 
     button = SubmitField('Calculate')

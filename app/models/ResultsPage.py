@@ -14,10 +14,13 @@ class ResultsPage(MethodView):
         bill_form = BillForm(request.form)
         bill = Bill(amount=bill_form.amount.data, period=bill_form.issue_date.data)
         household = Household(bill=bill)
-        f1 = Flatmate(bill_form.name1.data, bill_form.days_in_house1.data)
-        f2 = Flatmate(bill_form.name2.data, bill_form.days_in_house2.data)
-        household.add_flatmate(f1)
-        household.add_flatmate(f2)
+        for flatmate in bill_form.flatmates:
+            household.add_flatmate(
+                Flatmate(
+                    name=flatmate.data['flatmate_name'],
+                    days_in_house=flatmate.data['days_in_house']
+                )
+            )
         return render_template(
             'results_page.html',
             household=household

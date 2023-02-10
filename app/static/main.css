@@ -1,0 +1,14 @@
+body {
+    background-color: #fafafc;
+}
+main {
+    height: 100vh;
+    display: flex;
+}
+main .content {
+    margin: auto;
+}
+.description {
+    color: darkgray;
+    margin: 0;
+}

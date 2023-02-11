@@ -8,6 +8,10 @@ main {
 main .content {
     margin: auto;
 }
+.header {
+    justify-content: space-between;
+    display: flex;
+}
 .description {
     color: darkgray;
     margin: 0;

@@ -1,0 +1,18 @@
+body {
+    background-color: #fafafc;
+}
+main {
+    height: 100vh;
+    display: flex;
+}
+main .content {
+    margin: auto;
+}
+.header {
+    justify-content: space-between;
+    display: flex;
+}
+.description {
+    color: darkgray;
+    margin: 0;
+}

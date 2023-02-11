@@ -8,4 +8,4 @@ class Flatmate:
 
     def pays(self, bill: Bill, household_days_sum: int) -> int:
         weight = self.days_in_house / household_days_sum
-        return bill.amount * weight
+        return round(bill.amount * weight, 2)

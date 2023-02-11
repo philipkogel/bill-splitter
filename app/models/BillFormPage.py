@@ -23,9 +23,13 @@ class BillFormPage(MethodView):
                     days_in_house=flatmate.data['days_in_house']
                 )
             )
-        pdf = PdfReport(filename=f"household_report_{bill.period.month}_{bill.period.year}.pdf")
+        filename = f"household_report_{bill.period.month}_{bill.period.year}.pdf";
+        pdf = PdfReport(filename=filename)
         pdf.generate(household=household)
         return render_template(
-            'results_page.html',
-            household=household
+            'bill_form_page.html',
+            bill_form=bill_form,
+            household=household,
+            period=f"{household.bill.period.strftime('%B')} {household.bill.period.strftime('%Y')}",
+            filename=filename
         )
